@@ -1,8 +1,12 @@
 package com.tradingsimulator.FXTradingSimulator.models;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonAutoDetect(fieldVisibility=JsonAutoDetect.Visibility.ANY, getterVisibility=JsonAutoDetect.Visibility.NONE, setterVisibility=JsonAutoDetect.Visibility.NONE, creatorVisibility=JsonAutoDetect.Visibility.NONE)
+
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Rates {
@@ -103,7 +107,48 @@ public class Rates {
 	@JsonProperty("BRL")
     private String BRL;
 
-    public String getHRK ()
+	
+	
+//    public Rates(String hRK, String cHF, String mXN, String zAR, String iNR, String tHB, String cNY, String aUD,
+//			String iLS, String kRW, String jPY, String pLN, String gBP, String iDR, String hUF, String pHP, String tRY,
+//			String rUB, String hKD, String iSK, String dKK, String cAD, String uSD, String mYR, String bGN, String nOK,
+//			String rON, String sGD, String cZK, String sEK, String nZD, String bRL) {
+//		super();
+//		HRK = hRK;
+//		CHF = cHF;
+//		MXN = mXN;
+//		ZAR = zAR;
+//		INR = iNR;
+//		THB = tHB;
+//		CNY = cNY;
+//		AUD = aUD;
+//		ILS = iLS;
+//		KRW = kRW;
+//		JPY = jPY;
+//		PLN = pLN;
+//		GBP = gBP;
+//		IDR = iDR;
+//		HUF = hUF;
+//		PHP = pHP;
+//		TRY = tRY;
+//		RUB = rUB;
+//		HKD = hKD;
+//		ISK = iSK;
+//		DKK = dKK;
+//		CAD = cAD;
+//		USD = uSD;
+//		MYR = mYR;
+//		BGN = bGN;
+//		NOK = nOK;
+//		RON = rON;
+//		SGD = sGD;
+//		CZK = cZK;
+//		SEK = sEK;
+//		NZD = nZD;
+//		BRL = bRL;
+//	}
+
+	public String getHRK ()
     {
         return HRK;
     }

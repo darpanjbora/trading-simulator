@@ -7,8 +7,15 @@ public class Rate{
 	private Rates rates;
 
     private String base;
+    
+//    public Rate(String date, Rates rates, String base) {
+//		super();
+//		this.date = date;
+//		this.rates = rates;
+//		this.base = base;
+//	}
 
-    public String getDate ()
+	public String getDate ()
     {
         return date;
     }

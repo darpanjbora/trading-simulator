@@ -6,7 +6,9 @@ import com.tradingsimulator.FXTradingSimulator.models.Trade;
 
 public interface TradeRepository {
 
-	void save(Trade trade);
-	Map<String, Trade> findAll();
-	Trade findByType(String flag);
+	void saveBuy(Trade trade);
+	void saveSell(Trade trade);
+	Map<String, Trade> findAllSell();
+	Map<String, Trade> findAllBuy();
+	Trade findOne(String type, String id);
 }

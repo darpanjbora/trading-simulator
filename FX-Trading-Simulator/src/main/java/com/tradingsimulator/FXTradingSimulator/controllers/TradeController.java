@@ -20,25 +20,43 @@ public class TradeController {
 		this.tradeRepository = tradeRepository;
 	}
 	
-	@GetMapping("/add/{BaseCurr}/{TradeCurr}/{Quantity}/{Price}/{flag}")
-	public Trade add(@PathVariable("BaseCurr") String BaseCurr,
+	@GetMapping("/add/buy/{BaseCurr}/{TradeCurr}/{Quantity}/{Price}/{flag}")
+	public Trade addbuy(@PathVariable("BaseCurr") String BaseCurr,
 					@PathVariable("TradeCurr") String TradeCurr,
 					@PathVariable("Quantity") String quantity,
 					@PathVariable("Price") String Price,
-					@PathVariable("flag") String flag) {
+					@PathVariable("flag") String id) {
 		
-		tradeRepository.save(new Trade(BaseCurr, TradeCurr, quantity, Price, flag));
+		tradeRepository.saveBuy(new Trade(BaseCurr, TradeCurr, quantity, Price, id));
 		
-		return tradeRepository.findByType(flag);
+		return tradeRepository.findOne("BUY", id);
 	}
 	
-	@GetMapping("/findall")
-	public Map<String, Trade> findAll(){
-		return tradeRepository.findAll();
+	@GetMapping("/add/sell/{BaseCurr}/{TradeCurr}/{Quantity}/{Price}/{flag}")
+	public Trade addsell(@PathVariable("BaseCurr") String BaseCurr,
+					@PathVariable("TradeCurr") String TradeCurr,
+					@PathVariable("Quantity") String quantity,
+					@PathVariable("Price") String Price,
+					@PathVariable("flag") String id) {
+		
+		tradeRepository.saveSell(new Trade(BaseCurr, TradeCurr, quantity, Price, id));
+		
+		return tradeRepository.findOne("SELL", id);
 	}
 	
-	@GetMapping("/findbytype/{flag}")
-	public Trade findByType(@PathVariable("flag") String flag) {
-		return tradeRepository.findByType(flag);
+	@GetMapping("/findallsell")
+	public Map<String, Trade> findAllSell(){
+		return tradeRepository.findAllSell();
+	}
+	
+	@GetMapping("/findallbuy")
+	public Map<String, Trade> findAllBuy(){
+		return tradeRepository.findAllBuy();
+	}
+	
+	@GetMapping("/findOne/{type}/{id}")
+	public Trade findOne(@PathVariable("type") String type,
+						 @PathVariable("id") String id) {
+		return tradeRepository.findOne(type, id);
 	}
 }

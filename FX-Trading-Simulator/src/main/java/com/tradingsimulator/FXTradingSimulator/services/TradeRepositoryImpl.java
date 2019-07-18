@@ -23,21 +23,32 @@ public class TradeRepositoryImpl implements TradeRepository {
 	}
 	
 	@Override
-	public void save(Trade trade) {
+	public void saveBuy(Trade trade) {
 		// TODO Auto-generated method stub
-		hashOperations.put("TRADE", trade.getFlag(), trade);
+		hashOperations.put("BUY", trade.getId(), trade);
+	}
+	@Override
+	public void saveSell(Trade trade) {
+		// TODO Auto-generated method stub
+		hashOperations.put("SELL", trade.getId(), trade);
 	}
 
 	@Override
-	public Map<String, Trade> findAll() {
+	public Map<String, Trade> findAllSell() {
 		// TODO Auto-generated method stub
-		return hashOperations.entries("TRADE");
+		return hashOperations.entries("SELL");
+	}
+	
+	@Override
+	public Map<String, Trade> findAllBuy() {
+		// TODO Auto-generated method stub
+		return hashOperations.entries("BUY");
 	}
 
 	@Override
-	public Trade findByType(String flag) {
+	public Trade findOne(String type, String id) {
 		// TODO Auto-generated method stub
-		return (Trade)hashOperations.get("TRADE", flag);
+		return (Trade)hashOperations.get(type, id);
 	}
 
 }

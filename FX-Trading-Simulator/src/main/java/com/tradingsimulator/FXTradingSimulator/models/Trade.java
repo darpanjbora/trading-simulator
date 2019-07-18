@@ -4,31 +4,26 @@ import java.io.Serializable;
 
 
 public class Trade implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	String BaseCurr;
 	String TradeCurr;
 	String Quantity;
 	String Price;
-	String flag; //1 for Buying and 0 for Selling
+	String id;
 	
-	public Trade(String baseCurr, String tradeCurr, String quantity, String price, String flag) {
+	public Trade(String baseCurr, String tradeCurr, String quantity, String price, String id) {
 		super();
 		BaseCurr = baseCurr;
 		TradeCurr = tradeCurr;
 		Quantity = quantity;
 		Price = price;
-		this.flag = flag;
+		this.id = id;
 	}
-	
-	public String getFlag() {
-		return flag;
+	public String getId() {
+		return id;
 	}
-	public void setFlag(String flag) {
-		this.flag = flag;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getBaseCurr() {
 		return BaseCurr;

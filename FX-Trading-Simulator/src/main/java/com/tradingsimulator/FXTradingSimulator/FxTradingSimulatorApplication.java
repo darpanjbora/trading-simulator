@@ -1,16 +1,13 @@
 package com.tradingsimulator.FXTradingSimulator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tradingsimulator.FXTradingSimulator.Cache.Cache;
-import com.tradingsimulator.FXTradingSimulator.Cache.RedisCache;
-
-import redis.clients.jedis.Jedis;
+import com.tradingsimulator.FXTradingSimulator.models.Rate;
+import com.tradingsimulator.FXTradingSimulator.models.Trade;
 
 @SpringBootApplication
 public class FxTradingSimulatorApplication {
@@ -19,14 +16,15 @@ public class FxTradingSimulatorApplication {
 	JedisConnectionFactory jedisConnectionFactory() {
 		return new JedisConnectionFactory();
 	}
+	
+	@Bean 
+	RedisTemplate<String, Trade> redisTemplate() {
+		RedisTemplate<String, Trade> redisTemplate = new RedisTemplate<>();
+		redisTemplate.setConnectionFactory(jedisConnectionFactory());
+		return redisTemplate;
+	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(FxTradingSimulatorApplication.class, args);
 	}
-	
-//	@Bean
-//	@Autowired
-//	public Cache cacheObject(ObjectMapper objectMapper){
-//        return new RedisCache(objectMapper, redisCliFactory());
-//    }
-
 }

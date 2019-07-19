@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.tradingsimulator.FXTradingSimulator.models.Rate;
 import com.tradingsimulator.FXTradingSimulator.models.Trade;
 
 @SpringBootApplication

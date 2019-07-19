@@ -2,14 +2,18 @@ package com.tradingsimulator.FXTradingSimulator.models;
 
 import java.io.Serializable;
 
-
-public class Trade implements Serializable {
+@SuppressWarnings("serial")
+public class Trade implements Serializable{
 	
 	String BaseCurr;
 	String TradeCurr;
 	String Quantity;
 	String Price;
 	String id;
+	
+	public Trade() {
+		
+	}
 	
 	public Trade(String baseCurr, String tradeCurr, String quantity, String price, String id) {
 		super();
